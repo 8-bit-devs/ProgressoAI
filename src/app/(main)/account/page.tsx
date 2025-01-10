@@ -43,8 +43,8 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-100 p-4 ">
-      <Card className="w-full max-w-md bg-white shadow-xl mb-20">
+    <div className="flex min-h-screen items-center justify-center bg-slate-100 p-4">
+      <Card className="mb-20 w-full max-w-md bg-white shadow-xl">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-slate-800">
             Profile
