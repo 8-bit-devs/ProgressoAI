@@ -7,7 +7,6 @@ import { getServerSession } from "next-auth";
 import { Toaster } from "sonner";
 import { authOptions } from "./api/auth/[...nextauth]/auth";
 import "./globals.css";
-import CustomCursor from "@/components/ui/CustomCursor";
 
 export default async function RootLayout({
   children,
@@ -34,12 +33,7 @@ export default async function RootLayout({
           >
             <TooltipProvider>
               <Toaster />
-              <CustomCursor
-                color="#9333EA"
-                glow={true}
-                size={20}
-                duration={0.5}
-              />
+
               {children}
             </TooltipProvider>
           </ThemeProvider>
