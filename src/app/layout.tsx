@@ -34,7 +34,7 @@ export default async function RootLayout({
             <TooltipProvider>
               <Toaster />
               {children}
-              <ClientChatbot /> 
+              <ClientChatbot />
             </TooltipProvider>
           </ThemeProvider>
         </ClientProvider>
