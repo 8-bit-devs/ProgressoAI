@@ -20,16 +20,21 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { H3, P } from "@/components/ui/typography";
+import { generateCourseContent } from "@/features/course/actions/generate";
+import { successToast } from "@/features/global/toast";
+import { useUser } from "@/hooks/use-user";
 import { Steps } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BookSolid, Code, LetterJ } from "@mynaui/icons-react";
 import { CourseLevel, CourseType } from "@prisma/client";
+import { useMutation } from "@tanstack/react-query";
 import {
   BriefcaseBusiness,
   GraduationCap,
   Pen,
   Stethoscope,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -87,10 +92,12 @@ const formSchema = z.object({
   level: z.nativeEnum(CourseLevel),
 });
 
-type TFormValues = z.infer<typeof formSchema>;
+export type TFormValues = z.infer<typeof formSchema>;
 
 export default function Create() {
   const [step, setStep] = useState<Steps>("type");
+  const { user } = useUser();
+  const router = useRouter();
 
   const form = useForm<TFormValues>({
     resolver: zodResolver(formSchema),
@@ -101,8 +108,31 @@ export default function Create() {
     },
   });
 
-  const onSubmit = (data: TFormValues) => {
-    console.log({ data });
+  const { mutate } = useMutation({
+    mutationKey: ["create-course"],
+    mutationFn: async (data: TFormValues) => {
+      console.log(user);
+
+      return await generateCourseContent({
+        data,
+        email: user?.email as string,
+      });
+    },
+    onSuccess: ({ data, success }) => {
+      if (!success) throw new Error("Failed to create course");
+
+      router.push(`/course/${data.id}`);
+      successToast("Course created successfully");
+    },
+  });
+
+  const onSubmit = async (data: TFormValues) => {
+    try {
+      await mutate(data);
+    } catch (error) {
+      console.error("Error creating course:", error);
+      throw new Error("Failed to create course");
+    }
   };
 
   return (

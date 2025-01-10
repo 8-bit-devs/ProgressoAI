@@ -15,23 +15,49 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  courseId String?
-  course   Course? @relation(fields: [courseId], references: [id])
+  course Course[]
 
   @@index([email])
   @@index([id])
 }
 
 model Course {
-  id     String      @id @default(cuid())
-  type   CourseType  @default(Exam)
-  topic  String
-  level  CourseLevel @default(Easy)
-  layout Json
+  id          String      @id @default(cuid())
+  name        String
+  description String
+  type        CourseType  @default(Exam)
+  topic       String
+  level       CourseLevel @default(Easy)
+  category    String?
+  duration    String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  chapters Chapter[]
+  userId   String
+  user     User      @relation(fields: [userId], references: [id])
+
+  @@index([topic])
+  @@index([type])
+}
+
+model Chapter {
+  id          String @id @default(cuid())
+  name        String
+  description String
+  duration    String
+  category    String
+  topic       String
+  level       String
+  orderIndex  Int
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  User      User[]
+
+  @@index([courseId])
 }
 
 enum CourseType {

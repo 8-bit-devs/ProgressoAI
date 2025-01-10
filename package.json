@@ -12,6 +12,7 @@
     "db": "prisma generate"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "@hookform/resolvers": "^3.10.0",
     "@mynaui/icons-react": "^0.3.3",
     "@prisma/client": "^6.2.1",

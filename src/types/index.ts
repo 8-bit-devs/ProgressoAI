@@ -15,3 +15,31 @@ export const TUserSchema = z.object({
 export type TUser = z.infer<typeof TUserSchema>;
 
 export type Steps = "type" | "topic";
+
+export type GenerationConfig = {
+  temperature: number;
+  topP: number;
+  topK: number;
+  maxOutputTokens: number;
+  responseMimeType: string;
+};
+
+export type CourseChapter = {
+  name: string;
+  description: string;
+  duration: string;
+  category: string;
+  topic: string;
+  level: string;
+};
+
+export type CourseResponse = {
+  name: string;
+  description: string;
+  chapters: CourseChapter[];
+};
+
+export type ChatMessage = {
+  role: "user" | "model";
+  parts: { text: string }[];
+};
