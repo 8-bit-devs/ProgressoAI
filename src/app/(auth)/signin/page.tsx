@@ -1,50 +1,57 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
-import { TSmall } from "@/components/ui/typography";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import ContinueWithGoogle from "@/features/auth/continue-with-google";
-import Logo from "@/features/global/logo";
-import Link from "next/link";
+import { Label } from "@/components/ui/label";
 
-const SignIn = async () => {
+export default function LoginForm() {
   return (
-    <Card className="group relative overflow-hidden rounded-xl border-none bg-muted/40 px-2 pt-2 shadow-none transition-all">
-      <div className="rounded-xl bg-sidebar pt-1 shadow-sm">
-        <CardHeader className="m-2 flex items-center justify-center gap-2 space-y-0 border-b bg-sidebar py-5 sm:flex-row">
-          <Logo show={false} />
+    <div
+      className="flex min-h-screen items-center justify-center"
+      style={{
+        width: "100vw",
+        background: "linear-gradient(to bottom, #faf5ff, #ecd4fc, transparent)",
+      }}
+    >
+      <Card className="mx-4 mb-10 w-full max-w-md">
+        <CardHeader className="space-y-1 text-center">
+          <CardTitle className="mt-5 text-2xl">Sign In</CardTitle>
         </CardHeader>
-        <CardContent className="mx-auto flex w-full items-center justify-center rounded-xl bg-sidebar px-2 pt-4 sm:px-6 sm:pt-6">
+        <CardContent className="space-y-4">
           <ContinueWithGoogle />
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">
+                OR
+              </span>
+            </div>
+          </div>
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" placeholder="tom@ui8.net" type="email" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input id="password" type="password" />
+            </div>
+            <Button className="w-full bg-[#000000]" type="submit">
+              Login
+            </Button>
+          </div>
+          <div className="text-center text-sm">
+            Don&apos;t have an account?{" "}
+            <a href="#" className="text-blue-600 hover:underline">
+              Sign up for Free
+            </a>
+          </div>
         </CardContent>
-      </div>
-      <CardFooter className="flex items-center justify-between px-6 py-2">
-        <TSmall className="text-xs text-muted-foreground">
-          By continuing, you agree to our{""}
-          <Button
-            asChild
-            variant="link"
-            className="h-auto px-1 text-xs font-medium text-primary"
-          >
-            <Link href="terms-and-conditions">Terms of Service</Link>
-          </Button>
-          and{""}
-          <Button
-            asChild
-            variant="link"
-            className="h-auto px-1 text-xs font-medium text-primary"
-          >
-            <Link href="refund">Refund Policy</Link>
-          </Button>
-          .
-        </TSmall>
-      </CardFooter>
-      <div className="pointer-events-none absolute inset-px rounded-xl shadow ring-1 ring-black/5" />
-    </Card>
+      </Card>
+    </div>
   );
-};
-
-export default SignIn;
+}
