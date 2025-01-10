@@ -19,6 +19,9 @@ export const authOptions: AuthOptions = {
       if (session.user?.email) {
         const dbUser = await db.user.findUnique({
           where: { email: session.user.email },
+          include: {
+            course: true,
+          },
         });
 
         if (dbUser && session.user) {
