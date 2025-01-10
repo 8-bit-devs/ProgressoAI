@@ -7,7 +7,7 @@ import { getServerSession } from "next-auth";
 import { Toaster } from "sonner";
 import { authOptions } from "./api/auth/[...nextauth]/auth";
 import "./globals.css";
-
+import ClientChatbot from "@/components/ClientChatBot";
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -33,8 +33,8 @@ export default async function RootLayout({
           >
             <TooltipProvider>
               <Toaster />
-
               {children}
+              <ClientChatbot /> 
             </TooltipProvider>
           </ThemeProvider>
         </ClientProvider>
