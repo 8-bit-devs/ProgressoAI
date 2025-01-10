@@ -15,6 +15,37 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id])
+
   @@index([email])
   @@index([id])
+}
+
+model Course {
+  id     String      @id @default(cuid())
+  type   CourseType
+  topic  String
+  level  CourseLevel
+  layout Json
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User[]
+}
+
+enum CourseType {
+  EXAM
+  JOB_INTERVIEW
+  PRACTICE
+  CODING
+  JEE
+  NEET
+  OTHERS
+}
+
+enum CourseLevel {
+  EASY
+  MODERATE
+  DIFFICULT
 }
