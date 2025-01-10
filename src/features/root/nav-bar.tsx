@@ -26,36 +26,52 @@ export function Nav({ className }: { className?: string }) {
         className,
       )}
     >
-      <div className="flex items-center gap-2">
+      {/* Left section with logo */}
+      <div className="flex w-1/3 items-center gap-2">
         <Logo show />
       </div>
 
-      <div className="hidden md:flex">
-        {navLinks.map((link) => (
-          <Link
-            key={link.label}
-            href={link.href}
-            className={cn(
-              "mx-2 rounded-lg px-2 py-0.5 text-sm text-primary/60 hover:text-primary",
-              pathname === link.href && "bg-accent px-2 py-0.5 text-primary",
-            )}
-          >
-            {link.label}
-          </Link>
-        ))}
+      {/* Center section with navigation links */}
+      <div className="hidden w-1/3 justify-center md:flex">
+        <div className="flex items-center">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className={cn(
+                "mx-2 rounded-lg px-2 py-0.5 text-sm text-primary/60 hover:text-primary",
+                pathname === link.href && "bg-accent px-2 py-0.5 text-primary",
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </div>
 
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden"
-        aria-expanded={isOpen}
-        aria-label="Toggle menu"
-      >
-        {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-      </Button>
+      {/* Right section with login button */}
+      <div className="flex w-1/3 justify-end">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden"
+          aria-expanded={isOpen}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </Button>
 
+        <div className="hidden md:block">
+          <Link href="/signin" passHref>
+            <Button variant="outline" size="sm">
+              Log in
+            </Button>
+          </Link>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
       {isOpen && (
         <div className="fixed inset-0 left-0 top-0 z-50 bg-background md:hidden">
           <div className="flex h-full flex-col p-4">
@@ -96,14 +112,6 @@ export function Nav({ className }: { className?: string }) {
           </div>
         </div>
       )}
-
-      <div className="hidden md:block">
-        <Link href="/signin" passHref>
-          <Button variant="outline" size="sm">
-            Log in
-          </Button>
-        </Link>
-      </div>
     </nav>
   );
 }
