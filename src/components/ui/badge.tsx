@@ -1,15 +1,15 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+
 import { cn } from "@/lib/utils";
-import { geistSans } from "@/features/font";
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-md border border-input px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex items-center rounded-full border border-border/20 px-2.5 py-1 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 gap-2",
   {
     variants: {
       variant: {
         default:
-          "border-transparent bg-[#fff3ec]/80 text-[#7c533a] shadow hover:bg-[#fff3ec]/80",
+          "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
         secondary:
           "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
         destructive:
@@ -25,25 +25,11 @@ const badgeVariants = cva(
 
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {
-  icon?: React.ReactNode;
-}
+    VariantProps<typeof badgeVariants> {}
 
-function Badge({ className, variant, icon, children, ...props }: BadgeProps) {
+function Badge({ className, variant, ...props }: BadgeProps) {
   return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props}>
-      {icon && (
-        <span
-          className={cn(
-            "mr-2 inline-flex py-0.5 font-semibold",
-            geistSans.className,
-          )}
-        >
-          {icon}
-        </span>
-      )}
-      {children}
-    </div>
+    <div className={cn(badgeVariants({ variant }), className)} {...props} />
   );
 }
 
