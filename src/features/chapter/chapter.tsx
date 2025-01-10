@@ -1,9 +1,12 @@
-import React from "react";
+import { Course } from "@prisma/client";
+import { getRecommendation } from "./action/get-video-recommendation";
 
 type Props = {
-  id: string;
+  data: Course;
 };
 
-export const Chapter = ({ id }: Props) => {
-  return <div>Chapter: {id}</div>;
+export const Chapter = async ({ data }: Props) => {
+  const result = await getRecommendation(data.topic);
+
+  return <div>Chapter: {JSON.stringify(result, null, 2)}</div>;
 };
