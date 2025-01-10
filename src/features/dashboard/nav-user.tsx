@@ -93,11 +93,13 @@ export function NavUser() {
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
+            <Link href="/account">
               <DropdownMenuItem>
                 <CheckWaves />
                 Account
-              </DropdownMenuItem>
-              <Link href="/settings">
+                </DropdownMenuItem>
+                </Link>
+                <Link href="/settings">
                 <DropdownMenuItem>
                   <CogOne />
                   Setting
