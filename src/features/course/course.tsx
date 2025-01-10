@@ -36,6 +36,7 @@ import {
   Trash2,
   XCircle,
 } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 const generateFlashcards = async (courseId: string) => {
@@ -203,7 +204,13 @@ export function CoursePage({ id }: Props) {
 
       <Card className="border-none px-0 shadow-none">
         <CardHeader className="px-0">
-          <div className="flex items-center justify-between">more</div>
+          <div className="flex items-center justify-between">
+            <h3 className="text-lg font-semibold">Flash Cards</h3>
+
+            <Button asChild variant="outline">
+              <Link href={`/course/${course.id}/card`}>View All</Link>
+            </Button>
+          </div>
         </CardHeader>
         <CardContent className="px-0">
           <div className="flex max-w-sm flex-col">
