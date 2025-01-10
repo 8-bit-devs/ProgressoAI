@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import { getServerSession } from "next-auth";
 import { Toaster } from "sonner";
 import { authOptions } from "./api/auth/[...nextauth]/auth";
+import Chatbot from "@/components/ChatBot";
 import "./globals.css";
 
 export default async function RootLayout({
@@ -35,6 +36,7 @@ export default async function RootLayout({
               <Toaster />
 
               {children}
+              <Chatbot />
             </TooltipProvider>
           </ThemeProvider>
         </ClientProvider>
