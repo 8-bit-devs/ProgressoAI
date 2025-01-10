@@ -46,3 +46,12 @@ export const triggerFlashcards = inngest.createFunction(
     return { courseId, status: "completed", result };
   },
 );
+
+export const generateVideoRecommendations = inngest.createFunction(
+  { id: "generate-video-recommendations" },
+  { event: "video/generate.recommendations" },
+  async ({ event }) => {
+    const { courseId, chapterId } = event.data;
+    return { status: "completed", data: { courseId, chapterId } };
+  },
+);

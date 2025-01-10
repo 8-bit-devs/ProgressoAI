@@ -19,7 +19,7 @@ import Link from "next/link";
 
 const LoadingSkeleton = () => (
   <>
-    {[1, 2, 3].map((i) => (
+    {[1, 2, 3, 4].map((i) => (
       <Card key={i} className="flex flex-col">
         <CardHeader className="pt-6">
           <Skeleton className="h-8 w-3/4" />
@@ -33,7 +33,7 @@ const LoadingSkeleton = () => (
             <Skeleton className="h-4 w-1/4" />
           </div>
         </CardContent>
-        <CardFooter className="border-t">
+        <CardFooter className="border-t pt-6">
           <Skeleton className="h-6 w-24" />
         </CardFooter>
       </Card>
@@ -80,7 +80,10 @@ const Page = () => {
           ) : (
             courses?.map((course) => (
               <Link href={`/course/${course.id}`} key={course.id}>
-                <Card key={course.id} className="flex flex-col shadow-none">
+                <Card
+                  key={course.id}
+                  className="relative flex flex-col shadow-none"
+                >
                   <CardHeader className="pt-6">
                     <CardTitle className="text-xl font-semibold">
                       {course.name}
@@ -119,7 +122,7 @@ const Page = () => {
                     </div>
                   </CardContent>
 
-                  <CardFooter className="border-t pt-4">
+                  <CardFooter className="border-t pt-4 hover:border-t-primary/40">
                     <div className="flex items-center gap-2">
                       <span className="rounded bg-blue-100 px-2 py-1 text-sm font-medium text-blue-800">
                         {course.topic}
@@ -131,6 +134,10 @@ const Page = () => {
                       )}
                     </div>
                   </CardFooter>
+                  <div
+                    className="absolute inset-0 rounded-xl ring-1 ring-inset ring-primary/10 transition-all duration-200 hover:ring-primary/40"
+                    aria-hidden="true"
+                  />
                 </Card>
               </Link>
             ))
