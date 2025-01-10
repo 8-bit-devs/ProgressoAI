@@ -78,7 +78,6 @@ export async function generateFlashcards(course: Course) {
 
   const flashcards = await generateContent(input);
 
-  // Assuming you want to insert the flashcards into a database using Prisma:
   const flashcardsData = flashcards.map(
     (flashcard: { title: string; content: string }) => ({
       title: flashcard.title,

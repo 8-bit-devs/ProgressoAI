@@ -13,11 +13,9 @@ const courses = [
 const Dashboard = () => {
   return (
     <div className="flex-grow bg-white p-6 text-white">
-      {/* Main Content Container */}
       <div className="rounded-lg bg-white p-6 text-black shadow-md">
         <h1 className="mb-4 text-2xl font-bold">Track Your Progress</h1>
 
-        {/* Courses Section */}
         <div className="space-y-6">
           {courses.map((course, index) => (
             <div

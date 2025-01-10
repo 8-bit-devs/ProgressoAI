@@ -97,8 +97,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="w-full p-4 m-3">
-      <Card className="w-full mt-1 pt-5">
+    <div className="m-3 w-full p-4">
+      <Card className="mt-1 w-full pt-5">
         <CardHeader>
           <CardTitle>Course Leaderboard</CardTitle>
           <CardDescription>
@@ -106,16 +106,14 @@ const Dashboard = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="overflow-x-auto ">
+          <div className="overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-24 text-center">Rank</TableHead>
                   <TableHead className="w-1/3">Course</TableHead>
                   <TableHead className="w-24 text-center">Score</TableHead>
-                  <TableHead className="w-1/3">
-                    Notable Achievements
-                  </TableHead>
+                  <TableHead className="w-1/3">Notable Achievements</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -123,7 +121,6 @@ const Dashboard = () => {
                   <TableRow key={entry.rank}>
                     <TableCell className="text-center">
                       <div className="flex items-center justify-center space-x-2">
-                        {/* Only show rank number if it's not 1, 2, or 3 */}
                         {entry.rank > 3 && <span>{entry.rank}</span>}
                         {getRankIcon(entry.rank)}
                       </div>
@@ -137,7 +134,7 @@ const Dashboard = () => {
                         <Badge
                           key={milestone}
                           variant="secondary"
-                          className="mr-1 mb-1"
+                          className="mb-1 mr-1"
                         >
                           {milestone}
                         </Badge>

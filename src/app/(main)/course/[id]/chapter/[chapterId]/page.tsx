@@ -1,13 +1,20 @@
+import { db } from "@/db";
 import { Chapter } from "@/features/chapter/chapter";
-import React from "react";
+import { Course } from "@prisma/client";
 
 type Props = {
-  params: Promise<{ chapterId: string }>;
+  params: Promise<{ id: string; chapterId: string }>;
 };
 
 const ChapterPage = async ({ params }: Props) => {
-  const { chapterId } = await params;
-  return <Chapter id={chapterId} />;
+  const { id } = await params;
+
+  const data = await db.course.findUnique({
+    where: { id },
+    include: { chapters: true },
+  });
+
+  return <Chapter data={data as Course} />;
 };
 
 export default ChapterPage;

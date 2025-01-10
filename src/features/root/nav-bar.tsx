@@ -26,12 +26,10 @@ export function Nav({ className }: { className?: string }) {
         className,
       )}
     >
-      {/* Left section with logo */}
       <div className="flex w-1/3 items-center gap-2">
         <Logo show />
       </div>
 
-      {/* Center section with navigation links */}
       <div className="hidden w-1/3 justify-center md:flex">
         <div className="flex items-center">
           {navLinks.map((link) => (
@@ -49,7 +47,6 @@ export function Nav({ className }: { className?: string }) {
         </div>
       </div>
 
-      {/* Right section with login button */}
       <div className="flex w-1/3 justify-end">
         <Button
           variant="ghost"
@@ -71,7 +68,6 @@ export function Nav({ className }: { className?: string }) {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
         <div className="fixed inset-0 left-0 top-0 z-50 bg-background md:hidden">
           <div className="flex h-full flex-col p-4">
