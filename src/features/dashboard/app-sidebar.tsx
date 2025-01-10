@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sidebar";
 import { NavMain } from "@/features/dashboard/nav-main";
 import { NavUser } from "@/features/dashboard/nav-user";
-import { Terminal } from "@mynaui/icons-react";
+import { Frame, Terminal } from "@mynaui/icons-react";
 import * as React from "react";
 import Logo from "../global/logo";
 
@@ -42,6 +42,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           {
             title: "Reports",
             url: "/dashboard/reports",
+          },
+        ],
+      },
+      {
+        title: "Projects",
+        url: "#",
+        icon: <Frame size={16} className="font-semibold" strokeWidth={1.08} />,
+        isActive: true,
+        items: [
+          {
+            title: "Create",
+            url: "/create",
           },
         ],
       },
