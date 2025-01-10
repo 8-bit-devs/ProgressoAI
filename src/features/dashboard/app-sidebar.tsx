@@ -46,11 +46,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         ],
       },
       {
-        title: "Projects",
+        title: "Courses",
         url: "#",
         icon: <Frame size={16} className="font-semibold" strokeWidth={1.08} />,
         isActive: true,
         items: [
+          {
+            title: "All Courses",
+            url: "/course",
+          },
           {
             title: "Create",
             url: "/create",

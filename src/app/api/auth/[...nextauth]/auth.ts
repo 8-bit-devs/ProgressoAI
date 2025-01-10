@@ -20,7 +20,7 @@ export const authOptions: AuthOptions = {
         const dbUser = await db.user.findUnique({
           where: { email: session.user.email },
           include: {
-            course: true,
+            courses: true,
           },
         });
 
