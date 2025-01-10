@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -8,12 +7,10 @@ import ContinueWithGoogle from "@/features/auth/continue-with-google";
 import { Label } from "@/components/ui/label";
 
 export default function LoginForm() {
-
   return (
     <div
-      className="flex items-center justify-center"
+      className="flex min-h-screen items-center justify-center"
       style={{
-        minHeight: "100vh",
         width: "100vw",
         background: "linear-gradient(to bottom, #faf5ff, #ecd4fc, transparent)",
       }}
