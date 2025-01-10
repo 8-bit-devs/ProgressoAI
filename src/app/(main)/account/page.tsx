@@ -1,19 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { BlurFade } from "@/components/ui/blur";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { H3, P } from "@/components/ui/typography";
 import { useUser } from "@/hooks/use-user";
+import { useState } from "react";
 
 export interface User {
   name?: string;
@@ -43,85 +38,75 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-100 p-4">
-      <Card className="mb-20 w-full max-w-md bg-white shadow-xl">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold text-slate-800">
-            Profile
-          </CardTitle>
-          <CardDescription className="text-slate-500">
-            Manage your account information
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit}>
-            <div className="space-y-4">
-              <div className="flex justify-center">
-                <Avatar className="h-24 w-24">
-                  <AvatarImage src={user?.image} alt={user?.name} />
-                  <AvatarFallback className="bg-slate-200 text-xl text-slate-600">
-                    {user?.name?.charAt(0).toUpperCase()}
-                  </AvatarFallback>
-                </Avatar>
+    <BlurFade inView>
+      <section className="mx-auto max-w-6xl py-8 pt-4 md:px-4 md:pb-12">
+        <div className="flex flex-col gap-8">
+          <div className="flex flex-col space-y-2 text-left">
+            <H3 className="text-2xl font-bold tracking-tight md:text-3xl">
+              Account
+            </H3>
+            <P className="text-muted-foreground">
+              Manage your account information
+            </P>
+          </div>
+        </div>
+
+        <Card className="my-10 w-full max-w-md">
+          <CardContent className="pt-6">
+            <form onSubmit={handleSubmit}>
+              <div className="space-y-4">
+                <div className="flex items-center justify-center">
+                  <Avatar className="h-24 w-24">
+                    <AvatarImage src={user?.image} alt={user?.name} />
+                    <AvatarFallback className="bg-slate-200 text-xl text-slate-600">
+                      {user?.name?.charAt(0).toUpperCase()}
+                    </AvatarFallback>
+                  </Avatar>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="name">Name</Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={user?.name ?? ""}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={user?.email ?? ""}
+                    onChange={handleInputChange}
+                    disabled
+                  />
+                </div>
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-slate-700">
-                  Name
-                </Label>
-                <Input
-                  id="name"
-                  name="name"
-                  value={user?.name ?? ""}
-                  onChange={handleInputChange}
-                  disabled={!isEditing}
-                  className="border-slate-200 bg-slate-50 focus:border-slate-400"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-slate-700">
-                  Email
-                </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={user?.email ?? ""}
-                  onChange={handleInputChange}
-                  disabled={!isEditing}
-                  className="border-slate-200 bg-slate-50 focus:border-slate-400"
-                />
-              </div>
-            </div>
-          </form>
-        </CardContent>
-        <CardFooter className="flex justify-end space-x-2">
-          {isEditing ? (
-            <>
-              <Button
-                type="submit"
-                onClick={handleSubmit}
-                className="bg-slate-700 text-white hover:bg-slate-800"
-              >
-                Save Changes
+            </form>
+          </CardContent>
+          <CardFooter className="flex justify-end space-x-2">
+            {isEditing ? (
+              <>
+                <Button type="submit" onClick={handleSubmit} variant="outline">
+                  Save Changes
+                </Button>
+                <Button
+                  variant="destructive"
+                  onClick={() => setIsEditing(false)}
+                >
+                  Cancel
+                </Button>
+              </>
+            ) : (
+              <Button onClick={() => setIsEditing(true)} variant="outline">
+                Edit Profile
               </Button>
-              <Button
-                variant="outline"
-                onClick={() => setIsEditing(false)}
-                className="border-slate-200 text-slate-700 hover:bg-slate-100"
-              >
-                Cancel
-              </Button>
-            </>
-          ) : (
-            <Button
-              onClick={() => setIsEditing(true)}
-              className="bg-slate-700 text-white hover:bg-slate-800"
-            >
-              Edit Profile
-            </Button>
-          )}
-        </CardFooter>
-      </Card>
-    </div>
+            )}
+          </CardFooter>
+        </Card>
+      </section>
+    </BlurFade>
   );
 }
