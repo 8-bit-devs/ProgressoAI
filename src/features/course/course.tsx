@@ -38,11 +38,27 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { errorToast, successToast } from "../global/toast";
+import { useRouter } from "next/navigation";
 
 const generateFlashcards = async (courseId: string) => {
   const response = await fetch(`/api/inngest/flash-card?courseId=${courseId}`, {
     method: "GET",
   });
+
+  if (!response.ok) {
+    throw new Error("Failed to generate flashcards");
+  }
+  return response.json();
+};
+
+const generateVideo = async (courseId: string, chapterId: string) => {
+  const response = await fetch(
+    `/api/inngest/video?courseId=${courseId}&chapterId=${chapterId}`,
+    {
+      method: "GET",
+    },
+  );
 
   if (!response.ok) {
     throw new Error("Failed to generate flashcards");
@@ -56,6 +72,7 @@ type Props = {
 
 export function CoursePage({ id }: Props) {
   const [openChapters, setOpenChapters] = useState<string[]>([]);
+  const router = useRouter();
 
   const {
     data: course,
@@ -78,12 +95,25 @@ export function CoursePage({ id }: Props) {
     mutationKey: ["generate-flashcards"],
     mutationFn: generateFlashcards,
     onSuccess: () => {
-      alert("Flashcards generated successfully");
+      successToast("Flashcards generated successfully");
     },
     onError: (error: Error) => {
-      alert(`Error: ${error.message}`);
+      errorToast(error.message);
     },
   });
+
+  const { mutate: generateVideoMutate, isPending: isGeneratingVideo } =
+    useMutation({
+      mutationKey: ["generate-video"],
+      mutationFn: (data: { courseId: string; chapterId: string }) =>
+        generateVideo(data.courseId, data.chapterId),
+      onSuccess: () => {
+        successToast("Video generated successfully");
+      },
+      onError: (error: Error) => {
+        errorToast(error.message);
+      },
+    });
 
   const completedChapters = 0;
   const totalChapters = course?.chapters?.length || 0;
@@ -325,7 +355,21 @@ export function CoursePage({ id }: Props) {
                       {chapter.description}
                     </p>
                     <div className="mt-4">
-                      <Button size="sm">Start Chapter</Button>
+                      <Button
+                        size="sm"
+                        onClick={() => {
+                          router.push(
+                            `/course/${course.id}/chapter/${chapter.id}`,
+                          );
+                          generateVideoMutate({
+                            chapterId: chapter.id,
+                            courseId: course.id,
+                          });
+                        }}
+                        disabled={isGeneratingVideo}
+                      >
+                        {isGeneratingVideo ? "Generating..." : "Start Chapter"}
+                      </Button>
                     </div>
                   </div>
                 </CollapsibleContent>
