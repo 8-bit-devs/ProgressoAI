@@ -13,3 +13,5 @@ export const TUserSchema = z.object({
 });
 
 export type TUser = z.infer<typeof TUserSchema>;
+
+export type Steps = "type" | "topic";

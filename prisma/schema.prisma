@@ -15,8 +15,8 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  courseId String
-  course   Course @relation(fields: [courseId], references: [id])
+  courseId String?
+  course   Course? @relation(fields: [courseId], references: [id])
 
   @@index([email])
   @@index([id])
@@ -24,9 +24,9 @@ model User {
 
 model Course {
   id     String      @id @default(cuid())
-  type   CourseType
+  type   CourseType  @default(Exam)
   topic  String
-  level  CourseLevel
+  level  CourseLevel @default(Easy)
   layout Json
 
   createdAt DateTime @default(now())
@@ -35,17 +35,17 @@ model Course {
 }
 
 enum CourseType {
-  EXAM
-  JOB_INTERVIEW
-  PRACTICE
-  CODING
-  JEE
-  NEET
-  OTHERS
+  Exam
+  Job_Interview
+  Practice
+  Coding
+  Jee
+  Neet
+  Others
 }
 
 enum CourseLevel {
-  EASY
-  MODERATE
-  DIFFICULT
+  Easy
+  Moderate
+  Difficult
 }
