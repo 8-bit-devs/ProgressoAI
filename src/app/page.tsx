@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import ZoomParallax from "@/components/ui/zoom-parallax";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 export default function Hero() {
   return (
@@ -256,6 +257,7 @@ export default function Hero() {
           </footer>
           <div className="h-[5rem] w-full sm:hidden"></div>
         </div>
+        <CustomCursor color="#9333EA" glow={true} size={20} duration={0.5} />
       </div>
     </>
   );
