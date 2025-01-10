@@ -9,9 +9,9 @@ import CustomCursor from "@/components/ui/CustomCursor";
 export default function Hero() {
   return (
     <>
-      <Nav />
-
       <div className="bg-gradient-to-br from-purple-50 via-orange-50 to-transparent">
+        <Nav />
+
         <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col overflow-hidden pt-20 md:pt-36">
           <h1 className="relative z-10 mx-auto mt-1 max-w-6xl text-center text-2xl font-semibold text-black dark:text-white md:text-4xl lg:text-8xl">
             Unleash the full potential of{" "}
