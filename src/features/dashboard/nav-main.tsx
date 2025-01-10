@@ -25,7 +25,7 @@ type NavItem = {
 export function NavMain({ items }: { items: NavItem[] }) {
   return (
     <SidebarGroup className="z-10">
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel className="pb-2">Platform</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <SidebarMenuItem key={item.title}>
@@ -42,7 +42,7 @@ export function NavMain({ items }: { items: NavItem[] }) {
                     <SidebarMenuSubItem key={subItem.title}>
                       <SidebarMenuSubButton
                         asChild
-                        className="rounded-lg px-2 py-0.5 text-sm text-muted-foreground hover:bg-accent hover:text-primary"
+                        className="rounded-lg px-2 py-0.5 text-base text-muted-foreground hover:bg-accent hover:text-primary"
                       >
                         <a href={subItem.url}>
                           <span>{subItem.title}</span>

@@ -11,10 +11,11 @@ export const getCourse = async (id: string) => {
       include: {
         chapters: true,
         user: true,
+        flashcards: true,
       },
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new Error("Failed to get course");
   }
 };
