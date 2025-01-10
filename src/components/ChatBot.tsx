@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { IoMdSend } from "react-icons/io";
-import { FaRobot } from "react-icons/fa";
-import { RiCloseLine } from "react-icons/ri";
+import { Send, X } from "@mynaui/icons-react";
+import { Bot } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -92,7 +91,7 @@ const Chatbot = () => {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <FaRobot className="text-xl text-indigo-600" />
+                    <Bot className="text-xl text-indigo-600" />
                   </motion.div>
                   <h2 className="text-xl font-semibold text-white">
                     AI Assistant
@@ -104,7 +103,7 @@ const Chatbot = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <RiCloseLine className="text-2xl" />
+                  <X className="text-2xl" />
                 </motion.button>
               </motion.div>
 
@@ -170,7 +169,7 @@ const Chatbot = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
-                    <IoMdSend className="text-xl" />
+                    <Send className="text-xl" />
                   </motion.button>
                 </div>
               </motion.div>
@@ -185,7 +184,7 @@ const Chatbot = () => {
         onClick={toggleChatbot}
         className="rounded-full bg-indigo-600 p-4 text-white shadow-lg transition-colors hover:bg-indigo-700"
       >
-        <FaRobot className="text-2xl" />
+        <Bot className="text-2xl" />
       </motion.button>
     </div>
   );

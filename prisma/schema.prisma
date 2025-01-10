@@ -35,7 +35,7 @@ model Course {
 
   chapters Chapter[]
   userId   String
-  user     User      @relation(fields: [userId], references: [id])
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([topic])
   @@index([type])
