@@ -23,7 +23,7 @@ const SignIn = async () => {
       </div>
       <CardFooter className="flex items-center justify-between px-6 py-2">
         <TSmall className="text-xs text-muted-foreground">
-          By continuing, you agree to our{" "}
+          By continuing, you agree to our{""}
           <Button
             asChild
             variant="link"
@@ -31,7 +31,7 @@ const SignIn = async () => {
           >
             <Link href="terms-and-conditions">Terms of Service</Link>
           </Button>
-          and{" "}
+          and{""}
           <Button
             asChild
             variant="link"
