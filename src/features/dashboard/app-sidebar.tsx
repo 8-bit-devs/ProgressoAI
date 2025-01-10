@@ -31,18 +31,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         ),
         isActive: true,
         items: [
-          {
-            title: "Overview",
-            url: "/dashboard/overview",
-          },
+          
           {
             title: "Analytics",
             url: "/dashboard/analytics",
           },
-          {
-            title: "Reports",
-            url: "/dashboard/reports",
-          },
+          
         ],
       },
       {
