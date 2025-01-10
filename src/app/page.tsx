@@ -119,7 +119,7 @@ export default function Hero() {
 
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col overflow-hidden px-4 pt-20 sm:px-6 md:pt-40 lg:px-8">
         <h1 className="relative z-10 mx-auto mt-6 max-w-6xl text-center text-2xl font-bold tracking-wide text-foreground md:text-4xl lg:text-7xl">
-          Empowering Your Learning Journey with AI
+          Empowering Your Learning Journey with <span className="bg-gradient-to-b from-[#CB92FF] to-[#9333EA] bg-clip-text font-extrabold text-transparent">AI</span>⚡
         </h1>
         <p className="relative z-10 mx-auto mt-6 max-w-3xl text-center text-base text-muted-foreground md:text-xl">
           Tailored Courses, Smarter Insights, Faster Growth
@@ -225,12 +225,13 @@ export default function Hero() {
                   Get started for free
                 </Button>
                 <Button
-                  variant="outline"
                   size="lg"
-                  className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                  variant="secondary"
+                  className="hover:bg-secondary/90"
                 >
                   Schedule a demo
                 </Button>
+                
               </div>
             </div>
             <div className="relative h-64 w-full max-w-sm lg:h-96">
@@ -270,7 +271,7 @@ export default function Hero() {
           </div>
           <div className="mt-12 border-t border-border pt-8">
             <p className="text-center text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Progresso AI | All rights reserved.
+              © {new Date().getFullYear()} 󠁯•󠁏 Progresso AI | All rights reserved.
             </p>
           </div>
         </div>
