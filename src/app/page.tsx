@@ -118,13 +118,17 @@ export default function Hero() {
       <Nav />
 
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col overflow-hidden px-4 pt-20 sm:px-6 md:pt-40 lg:px-8">
-        <h1 className="relative z-10 mx-auto mt-6 max-w-6xl text-center text-2xl font-bold tracking-wide text-foreground md:text-4xl lg:text-7xl">
-          Empowering Your Learning Journey with <span className="bg-gradient-to-b from-[#CB92FF] to-[#9333EA] bg-clip-text font-extrabold text-transparent">AI</span>⚡
+        <h1 className="relative z-10 mx-auto mt-6 max-w-6xl text-center text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
+          Empowering Your Learning Journey with{" "}
+          <span className="bg-gradient-to-b from-[#CB92FF] to-[#9333EA] bg-clip-text font-extrabold text-transparent">
+            AI
+          </span>
+          ⚡
         </h1>
         <p className="relative z-10 mx-auto mt-6 max-w-3xl text-center text-base text-muted-foreground md:text-xl">
           Tailored Courses, Smarter Insights, Faster Growth
         </p>
-        <div className="relative z-10 mt-10 flex items-center justify-center gap-4">
+        <div className="relative z-10 mt-10 flex flex-wrap items-center justify-center gap-4">
           <Button
             className="flex items-center gap-2 rounded-full py-6"
             size="lg"
@@ -164,7 +168,7 @@ export default function Hero() {
           <h2 className="mb-4 text-3xl font-bold text-foreground md:text-5xl">
             Everything you need to excel
           </h2>
-          <p className="text-muted-foreground">
+          <p className="relative z-10 mx-auto mt-6 max-w-3xl text-center text-base text-muted-foreground md:text-xl">
             Comprehensive features designed to enhance your learning experience
           </p>
         </div>
@@ -231,7 +235,6 @@ export default function Hero() {
                 >
                   Schedule a demo
                 </Button>
-                
               </div>
             </div>
             <div className="relative h-64 w-full max-w-sm lg:h-96">
@@ -271,7 +274,8 @@ export default function Hero() {
           </div>
           <div className="mt-12 border-t border-border pt-8">
             <p className="text-center text-sm text-muted-foreground">
-              © {new Date().getFullYear()} 󠁯•󠁏 Progresso AI | All rights reserved.
+              © {new Date().getFullYear()} 󠁯•󠁏 Progresso AI | All rights
+              reserved.
             </p>
           </div>
         </div>

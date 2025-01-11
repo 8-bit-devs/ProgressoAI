@@ -61,7 +61,7 @@ export function Nav({ className }: { className?: string }) {
 
         <div className="hidden md:block">
           <Link href="/signin" passHref>
-            <Button variant="outline" size="sm">
+            <Button variant="default" size="sm">
               Log in
             </Button>
           </Link>
@@ -100,7 +100,7 @@ export function Nav({ className }: { className?: string }) {
             </div>
             <div className="mt-auto">
               <Link href="/signin" passHref className="w-full">
-                <Button className="w-full" variant="outline" size="lg">
+                <Button className="w-full" variant="default" size="lg">
                   Log in
                 </Button>
               </Link>

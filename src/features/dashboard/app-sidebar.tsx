@@ -31,12 +31,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         ),
         isActive: true,
         items: [
-          
           {
             title: "Analytics",
             url: "/dashboard/analytics",
           },
-          
         ],
       },
       {
