@@ -179,7 +179,7 @@ export default function Create() {
                     </div>
 
                     <div
-                      className="absolute inset-0 rounded-xl ring-1 ring-inset ring-primary/10 transition-all duration-200 hover:ring-primary/40"
+                      className="absolute inset-0 rounded-xl ring-1 ring-inset ring-foreground/20 transition-all duration-200 hover:ring-foreground/40"
                       aria-hidden="true"
                     />
                   </Label>

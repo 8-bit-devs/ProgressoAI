@@ -17,7 +17,7 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
           {...props}
         />
 
-        <div className="absolute inset-0 rounded-lg ring-1 ring-inset ring-primary/10" />
+        <div className="absolute inset-0 rounded-lg ring-1 ring-inset ring-foreground/20" />
       </div>
     );
   },
