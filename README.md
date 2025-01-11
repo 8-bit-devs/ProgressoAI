@@ -1,7 +1,7 @@
 
 
 <div align="center">
-  <img src="https://collection.cloudinary.com/dsk0p6hjg/6f72d7543ed0ac2443054074c47d7468" alt="Progresso Logo" width="100%"  />
+  <img src="" alt="Progresso Logo" width="100%"  />
   <h1>Progresso AI⚡</h1>
   <p><strong>A modern webapp to revolutionize workplace learning by tailoring experiences to individual needs along with personalized courses and AI generated flashcard quizzes.</strong></p>
   <a href="https://progresso-ai.vercel.app/">Visit Progresso AI</a>
@@ -76,7 +76,7 @@ Progresso AI is a fully responsive and comprehensive webapp designed to explore 
 ## 📊 System Architecture
 
 <div align="center">
-  <img src="https://utfs.io/f/xi8FFW9wN0K4bPwq2UivN6RHfr2Dx40U9YIXgwWoEyzGnTVM" alt="Response architecture" width="100%" />
+  <img src="" alt="System Architecture" width="100%" />
 </div>
 
 ## 🚀 Getting Started
@@ -122,7 +122,6 @@ If you find Response helpful, please consider:
 
 - ⭐ Giving a star on GitHub
 
-Your support helps maintain and improve Response!                                               |
 
 
 
