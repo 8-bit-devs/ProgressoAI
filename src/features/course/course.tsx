@@ -79,7 +79,7 @@ export function CoursePage({ id }: Props) {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["course", id],
+    queryKey: ["course-data", id],
     queryFn: () => getCourse(id),
   });
 
@@ -115,7 +115,8 @@ export function CoursePage({ id }: Props) {
       },
     });
 
-  const completedChapters = 0;
+  const completedChapters =
+    course?.chapters?.filter((chapter) => chapter.completed).length || 0;
   const totalChapters = course?.chapters?.length || 0;
   const progressPercentage = (completedChapters / totalChapters) * 100;
 

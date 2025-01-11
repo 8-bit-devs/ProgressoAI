@@ -161,6 +161,7 @@ export async function generateCourseContent({
                   topic: chapter.topic,
                   level: chapter.level,
                   orderIndex: index,
+                  completed: false,
                 })),
               },
             },

@@ -19,7 +19,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-export const features = [
+const features = [
   {
     title: "AI-Powered Learning",
     description: "Personalized learning paths adapted to your pace and style",
@@ -50,7 +50,7 @@ export const features = [
   },
 ];
 
-export const accordionData = [
+const accordionData = [
   {
     value: "item-1",
     question: "How does AI personalize my learning?",
@@ -77,7 +77,7 @@ export const accordionData = [
   },
 ];
 
-export const footerLinks = [
+const footerLinks = [
   {
     title: "Product",
     links: [
