@@ -2,16 +2,15 @@ import { BlurFade } from "@/components/ui/blur";
 import { H3, P } from "@/components/ui/typography";
 import { db } from "@/db";
 import FlashCard from "@/features/course/flash-card";
-import { Flashcard } from "@prisma/client";
 
 type Props = {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 };
 
 const Page = async ({ params }: Props) => {
-  const { id } = await params;
+  const { id } = params;
 
-  const flashCard = await db.flashcard.findMany({
+  const flashCards = await db.flashcard.findMany({
     where: { courseId: id },
   });
 
@@ -30,10 +29,16 @@ const Page = async ({ params }: Props) => {
           </div>
         </div>
 
-        {flashCard.length > 0 ? (
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <FlashCard data={flashCard as Flashcard[]} />
-          </div>
+        {flashCards.length > 0 ? (
+          <>
+            <H3 className="mt-8 mb-4 text-xl font-semibold">Python Basics Flashcards</H3>
+            <P className="mb-6 text-sm text-muted-foreground">
+              Click on a card to flip it and reveal the answer
+            </P>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <FlashCard data={flashCards} />
+            </div>
+          </>
         ) : (
           <div className="py-8 text-center text-red-600">
             No flashcards found for this course.
@@ -45,3 +50,4 @@ const Page = async ({ params }: Props) => {
 };
 
 export default Page;
+
