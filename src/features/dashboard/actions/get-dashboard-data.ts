@@ -19,6 +19,8 @@ export type DashboardData = {
     progress: number;
     type: string;
     level: string;
+    totalChapters: number;
+    completedChapters: number;
   }[];
 };
 
@@ -48,6 +50,12 @@ export const getDashboardData = unstable_cache(
             name: true,
             type: true,
             level: true,
+            chapters: {
+              select: {
+                id: true,
+                completed: true,
+              },
+            },
           },
         }),
       ]);
@@ -62,10 +70,25 @@ export const getDashboardData = unstable_cache(
         level: level.toString(),
         count: _count,
       })),
-      recentCourses: recentCourses.map((course) => ({
-        ...course,
-        progress: Math.floor(Math.random() * 100), // Simulated progress
-      })),
+      recentCourses: recentCourses.map((course) => {
+        const totalChapters = course.chapters.length;
+        const completedChapters = course.chapters.filter(
+          (chapter) => chapter.completed,
+        ).length;
+        const progress = totalChapters
+          ? Math.round((completedChapters / totalChapters) * 100)
+          : 0;
+
+        return {
+          id: course.id,
+          name: course.name,
+          type: course.type,
+          level: course.level,
+          progress,
+          totalChapters,
+          completedChapters,
+        };
+      }),
     };
   },
   ["dashboard-data"],

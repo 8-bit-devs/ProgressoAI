@@ -31,7 +31,9 @@ const Page = async ({ params }: Props) => {
         </div>
 
         {flashCard.length > 0 ? (
-          <FlashCard data={flashCard as Flashcard[]} />
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <FlashCard data={flashCard as Flashcard[]} />
+          </div>
         ) : (
           <div className="py-8 text-center text-red-600">
             No flashcards found for this course.

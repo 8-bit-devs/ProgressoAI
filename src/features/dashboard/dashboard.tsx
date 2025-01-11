@@ -11,7 +11,6 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { H3, P } from "@/components/ui/typography";
-import { DashboardData } from "@/features/dashboard/actions/get-dashboard-data";
 import {
   Bar,
   BarChart,
@@ -22,6 +21,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { DashboardData } from "./actions/get-dashboard-data";
 
 const COLORS = [
   "hsl(var(--primary))",
@@ -141,7 +141,13 @@ export function DashboardClient({ data }: { data: DashboardData }) {
                         {course.type} • {course.level}
                       </p>
                     </div>
-                    <p className="text-sm font-medium">{course.progress}%</p>
+                    <div className="text-right">
+                      <p className="text-sm font-medium">{course.progress}%</p>
+                      <p className="text-xs text-muted-foreground">
+                        {course.completedChapters} of {course.totalChapters}{" "}
+                        chapters
+                      </p>
+                    </div>
                   </div>
                   <Progress value={course.progress} className="mt-2 w-full" />
                   <div className="absolute inset-0 rounded-lg ring-1 ring-inset ring-foreground/20" />
