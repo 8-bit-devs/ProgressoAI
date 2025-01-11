@@ -53,7 +53,7 @@ export function NavUser() {
                 <AvatarFallback className="rounded-xl px-3 py-2">
                   {user?.name?.charAt(0)}
                 </AvatarFallback>
-                <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-primary/10" />
+                <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-foreground/20" />
               </Avatar>
               <div className="grid flex-1 items-center text-left text-sm leading-tight">
                 <span className="truncate font-semibold">{user?.name}</span>
