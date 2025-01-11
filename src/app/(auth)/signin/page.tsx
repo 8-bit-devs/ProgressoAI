@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 export default function LoginForm() {
   return (
     <div
-      className="flex min-h-screen items-center justify-center"
+      className="flex items-center justify-center"
       style={{
         width: "100vw",
         background: "linear-gradient(to bottom, #faf5ff, #ecd4fc, transparent)",
@@ -40,7 +40,10 @@ export default function LoginForm() {
               <Label htmlFor="password">Password</Label>
               <Input id="password" type="password" />
             </div>
-            <Button className="w-full bg-[#000000]" type="submit">
+            <Button
+              className="w-full bg-[#000000] hover:bg-[#000000]/20"
+              type="submit"
+            >
               Login
             </Button>
           </div>
